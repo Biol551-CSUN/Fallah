@@ -11,5 +11,5 @@ Syllabus and Schedule
 
 * [Script folder and files](https://github.com/rfallah23/first/tree/main/Week_02/scripts)
 
-![slight progress](https://github.com/rfallah23/Images/blob/main/giphy.gif) <-- center align requires skills I do not possess ![crying dude](https://github.com/rfallah23/Images-GIFs/blob/main/crying%20man.gif)
+![slight progress](https://github.com/rfallah23/Images/blob/main/giphy.gif) <- center align requires skills I do not possess ![crying dude](https://github.com/rfallah23/Images-GIFs/blob/main/crying%20man.gif)
 
