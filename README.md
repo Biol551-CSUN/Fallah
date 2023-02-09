@@ -7,7 +7,7 @@ Each Week contains a _Script_, _Data_ and _Output_ folder.
 
 [Syllabus and Schedule](https://github.com/Biol551-CSUN/Spring-2023/tree/main/Syllabus_and_Schedule)
 
-* [Week 2](https://github.com/rfallah23/first/tree/main/Week_02)
+* [Week 2](https://github.com/Biol551-CSUN/Fallah/tree/main/Week_02)
 
 * [Script folder and files](https://github.com/rfallah23/first/tree/main/Week_02/scripts)
 
