@@ -25,3 +25,4 @@ ggplot(penguins,
         y = bill_length_mm))+
   geom_point()+
   facet_grid(sex~species)
+
