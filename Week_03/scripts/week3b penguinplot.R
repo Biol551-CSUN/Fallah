@@ -46,3 +46,4 @@ ggplot(diamonds, aes(carat, price)) +
 
 ggsave(here("Week_03", "output", "penguin.png"),
 width = 7, height = 5)
+
