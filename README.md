@@ -9,7 +9,7 @@ Each Week contains a _Script_, _Data_ and _Output_ folder.
 
 * [Week 2](https://github.com/Biol551-CSUN/Fallah/tree/main/Week_02)
 
-* [Script folder and files](https://github.com/rfallah23/first/tree/main/Week_02/scripts)
+* [Week 3](https://github.com/Biol551-CSUN/Fallah/tree/main/Week_03)
 
 
 ![slight progress](https://github.com/rfallah23/Images/blob/main/giphy.gif)  <- center aligning with GIFs broke me ![crying dude](https://github.com/rfallah23/Images-GIFs/blob/main/crying%20man.gif)
