@@ -44,5 +44,5 @@ ggplot(diamonds, aes(carat, price)) +
   geom_point() +
   coord_trans(x = "log10", y = "log10")
 
-ggsave(here("Week_03", "output", "penguin.png"))
-
+ggsave(here("Week_03", "output", "penguin.png"),
+width = 7, height = 5)
