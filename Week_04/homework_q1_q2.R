@@ -85,7 +85,10 @@ ggplot(data= Part_2,
                 y = log_mass))+
   geom_boxplot()+
     labs(x ="species",
-         y = "log_mass")
+         y = "log_mass")+
+  scale_color_manual_d("blue", "orange","pink")
 
 Part_2  
   
+ggsave(here("Week_04", "output", "homework_part2.png"))
+
