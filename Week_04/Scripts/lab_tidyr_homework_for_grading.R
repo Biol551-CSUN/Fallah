@@ -15,22 +15,28 @@ tidyr<- ChemData %>%
          sep = "_")%>% # separate by _
   filter(complete.cases(.)) %>%
   filter(Season == "SPRING") %>%
-  select(Season, Tide, Time, Salinity, pH) %>%
-  pivot_longer(cols = Salinity:pH, # the cols you want to pivot. This says select the temp to percent SGD cols  
-                               names_to = "Variables", # the names of the new cols with all the column names 
-                               values_to = "Values") %>%
-  group_by(Variables, Season, Time) %>%
-  summarise(mean_vals = mean(Values, na.rm = TRUE)) ## calculating mean  and removing NA's for the calc values to not mess up ##
-
+  select(Zone, pH, Temp_in, Phosphate) %>%
+  pivot_longer(cols = Zone, # the cols you want to pivot.   
+  names_to = "Variables", # the names of the new cols with all the column names 
+  values_to = "Values") %>%
+  group_by(Variables)
+  #summarise(mean_vals = mean(Values, na.rm = TRUE)) ## calculating mean 
+view(tidyr)
 ggplot(data = tidyr,
-       mapping = aes(x = Time,
-                     y = mean_vals,
-                     group = Variables,
-                     color = Variables))+
-  geom_point()+
-  labs(x = "Time",
-       y = "Salinity pH")
+       mapping = aes(x = Values,
+                     y = pH,
+                     group = Values,
+                     color = Values))+
+                     
+geom_point()+
+labs(x = "Zone",
+        y = "pH")+
+theme_linedraw()+
+theme(axis.title = element_text(size = 20,
+                                color = "red"),
+panel.background = element_rect(fill = "linen"))
 
-ggsave(here("Week_04", "Output", "lab_tidyr_homework_for_grading.png"))
+
+ggsave(here("Week_04", "Output", "Week_04/Output/lab_tidyr_homework_for_grading.png"))
           
   
