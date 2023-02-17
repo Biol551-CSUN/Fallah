@@ -1,4 +1,4 @@
-# Fallah
+# Roshan Fallah
 >### Graduate researcher from Dr. Maria De Bellard's Molecular and Cellular Biology lab. 
 >My research area uses Rat models to investigate the pathological mechanisms that give rise to Ataxia, a neurological condition.
 
