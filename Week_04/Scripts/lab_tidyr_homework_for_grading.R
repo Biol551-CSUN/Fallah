@@ -39,4 +39,5 @@ panel.background = element_rect(fill = "linen")) ## doesnt make it super clear b
 
 ggsave(here("Week_04", "Output", "lab_tidyr_homework_for_grading.png"),
 width = 7, height = 5)
+
   
