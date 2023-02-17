@@ -38,6 +38,6 @@ theme(axis.title = element_text(size = 20,
   scale_fill_discrete(name="Zone")  ### cant get the legend title to change ###
 
 
-ggsave(here("Week_04", "Output", "lab_tidyr_homework_ph_temp.png"))
-          
+ggsave(here("Week_04", "Output", "lab_tidyr_homework_ph_temp.png"),
+width = 7, height = 5)
   

@@ -37,6 +37,6 @@ theme(axis.title = element_text(size = 20,
 panel.background = element_rect(fill = "linen")) ## doesnt make it super clear but looks okish I guess ##
 
 
-ggsave(here("Week_04", "Output", "lab_tidyr_homework_for_grading.png"))
-          
+ggsave(here("Week_04", "Output", "lab_tidyr_homework_for_grading.png"),
+width = 7, height = 5)
   
