@@ -30,6 +30,7 @@ ggplot(data = tidyr,
   geom_point()+
   labs(x = "Time",
        y = "Salinity pH")
-       
+
+ggsave(here("Week_04", "Output", "lab_tidyr_homework_for_grading.png"))
           
   

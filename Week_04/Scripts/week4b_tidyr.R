@@ -59,6 +59,6 @@ ChemData_clean<-ChemData %>%
   summarise(mean_vals = mean(Values, na.rm = TRUE)) %>%
 pivot_wider(names_from = Variables, 
             values_from = mean_vals) %>% # notice it is now mean_vals as the col name
-  write_csv(here("Week_04","Output","summary.csv"))  # export as a csv to the right folder
+write_csv(here("Week_04","Output","summary.csv"))  # export as a csv to the right folder
 
 View(ChemData_clean)
