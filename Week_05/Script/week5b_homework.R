@@ -1,3 +1,6 @@
+#### Today I will be joining data and creating plots ###
+### Week5b Roshan Fallah ###
+
 install.packages("lubridate")
 library(tidyverse)
 library(here)
@@ -47,11 +50,14 @@ summarise(mean_depth = mean(Depth, na.rm = TRUE),
 mean_temp = mean(TempInSitu, na.rm = TRUE),
 mean_salinity = mean(Salinity, na.rm = TRUE))
 
-ggplot(data = DepthData,
-       mapping = aes(x = mean_depth,
-                     y = mean_temp))+
+ggplot(data = DepthData,  ## produce plot ##
+       mapping = aes(x = Date,
+                     y = mean_temp,
+                     color = Date))+
 
-geom_point()
-  labs(x = "Mean Depth",
-       y = "Mean Temp")
-          
+geom_point()+
+  geom_smooth(method = "lm")+ #line of best fit##
+  labs(x = "Time",     #axis titles##
+       y = "Temp")
+
+  ggsave(here("Week_05", "Output", "DepthData_homework.png"))  ##save data##
