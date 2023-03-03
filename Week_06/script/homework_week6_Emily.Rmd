@@ -1,0 +1,63 @@
+---
+title: "Homework_week6"
+author: "Roshan"
+date: "2023-03-02"
+output: 
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE,
+                      message = FALSE,
+                      fig.path = "../output/")
+```
+
+# Introduction to **RMarkdown**
+
+
+### *Loading libraries*
+```{r}
+library(tidyverse)
+library(kableExtra)
+library(palmerpenguins)
+```
+
+# Inspect penguin data
+
+```{r}
+glimpse(penguins)
+
+```
+# Producing plot
+
+```{r}
+penguins %>%  ## using the penguin dataset ##
+  ggplot(aes(x = bill_length_mm,
+             y = body_mass_g,
+             fill = species,
+             color = species))+
+  facet_grid(species ~ .) +   # plotting 3 graphs by species
+
+geom_violin()+    ## using violin plot
+  labs(x="Bill Length (mm)",     # Axis labels 
+       y = "Body Mass (g)")+
+theme_dark()+
+ggtitle("Penguin Body Mass vs Bill Length in all 3 species") ## just adding a title as you reminded me in the last grading thanks Emily :)
+```
+
+# Penguin *Kable* Table
+
+```{r}
+penguins %>%
+  group_by(island) %>%
+  summarise(DepthMean = mean(bill_depth_mm, na.rm = TRUE)) %>%
+  kbl()%>% # making it a kabletable
+  kable_material_dark()%>%   # making it look less plain, the dark wouldn't be a usual choice as its tougher to read 
+    row_spec(2, bold = T, color = "blue", background = "orange") %>%
+  kable_styling(full_width = FALSE)  
+```
+
+# Conclusion 
+### Still have much to learn but will now finally get to work on this module much more as my **presentation marathon** from my other module is pretty much done.....Thankfully! :)) woo hoo
