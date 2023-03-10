@@ -55,8 +55,7 @@ coord_cartesian(xlim = c(-3.50, -6.00), ylim = c(49.50, 51.50))+  ## zooming in 
 
 #Saving output
 ```{r}
-ggsave(here("Week_07", "Output", "Week_7_homework_UKcatsZoomed.png"),
-       width = 5, height = 5)
+ggsave(here("Week_07", "Output", "Week_7_homework_UKcatsZoomed.png"))
 ```
 
 
