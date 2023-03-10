@@ -1,0 +1,65 @@
+---
+title: "Week 7 Homework Attempt II"
+author: "Roshan Fallah"
+date: "2023-03-09"
+output: 
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Revisiting week7 homework to zoom in 
+
+```{r}
+# Load required packages
+library(ggmap)
+library(dplyr)
+library(ggplot2)
+library(here)
+library(ggsn)
+```
+
+# Read UK Cat data
+```{r}
+tuesdata <- tidytuesdayR::tt_load('2023-01-31')
+
+cats_uk <- tuesdata$cats_uk
+```
+
+##load API
+```{r}
+register_google(key = "AIzaSyAOb8vDcmuEg-IVplAe73XJvBjcsyqx1a8", write = TRUE)
+
+```
+
+# Get map image for the sunny motherland :)
+```{r}
+uk_map <- get_map(location = "United Kingdom", zoom = 5)
+ggmap(uk_map)
+```
+
+# Plot map with cat data
+```{r}
+ggmap(uk_map)+
+  geom_point(data = cats_uk, aes(x = location_long, y = location_lat,
+                                 color = tag_id)) +
+  scale_color_discrete(name = "tag_id")+   # Adding color although far from perfect the legend was insanely big and removing the map
+  theme(legend.position = "none")+  ## removing annoying legend with 2million cat breeds
+coord_cartesian(xlim = c(-3.50, -6.00), ylim = c(49.50, 51.50))+  ## zooming in but not too much as looked weird
+  ggtitle("Cat breeds in the South East of the UK")  ## adding a title
+```
+
+#Saving output
+```{r}
+ggsave(here("Week_07", "Output", "Week_7_homework_UKcatsZoomed.png"))
+```
+
+
+
+
+
+ 

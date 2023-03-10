@@ -15,7 +15,7 @@ stars<-read_csv(here("Week_07","data","stars.csv"))
 
 world<-map_data("world")  #get data for entire world
 head(world)
-
+view(stars)
 
 usa<-map_data("usa")
 view(usa)
