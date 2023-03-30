@@ -168,7 +168,7 @@ facet_wrap(~crime_year)+
   
   geom_text(stat = "count", aes(label = ..count..),color = "orange", position = position_stack(vjust = 0.5))+
   
-  labs(title = "Homicide frequency by area and year")+ 
+  labs(title = "Homicide frequency in LA")+ 
        theme(plot.title = element_text(color = "orange"))+
 theme_gray()+
   theme(panel.background = element_rect(fill = "light blue"))+
