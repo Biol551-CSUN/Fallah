@@ -1,0 +1,122 @@
+---
+title: "Homework_week9_functions"
+author: "Roshan"
+date: "2023-04-13"
+output: 
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+  
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+
+# The 3 functions.
+
+### Function 1: **roundpenguins** 
+### Function 2: **penguinviolin** 
+### Function 3: **redtext**
+
+
+
+
+# Load libraries
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(here)
+library(palmerpenguins)
+library(kableExtra)
+library(ggplot2)
+```
+
+
+# Creating function 1
+
+```{r}
+## creating roundpenguins as a new function containing 3 sub-functions
+roundpenguins <- function(penguins) {  
+  penguins %>%              ## calling 'penguins' dataset as argument for mutate function
+    mutate(bill_depth_mm = round(bill_depth_mm),  ## rounds bill_depth column to integers
+           bill_length_mm = round(bill_length_mm)) %>%  ## round bill_length col to integers
+    na.omit() ## removes any rows containing empty fields in any columns
+}
+
+## using 'roundpenguins' function to clean penguin data columns
+roundedpenguins <- roundpenguins(penguins)  
+view(roundedpenguins)
+```
+
+# Example of function benefits
+
+The table below shows the printed 'head' of the roundedpenguin data after function
+roundpenguins was executed carrying out 3 independent functions. Rounding column
+"bill depth" and "bill length" to an integer using the mutate function and removing NA's
+using na.omit
+```{r}
+head(roundedpenguins)
+```
+
+# Creating function 2
+
+```{r}
+
+
+penguinviolin <- function(penguins) {   ## creating new function with penguin argument for data to produce a penguin plot
+  ggplot(data = penguins,aes(x = bill_length_mm, 
+          y = body_mass_g,
+          color = species,
+          fill = species))+    
+          geom_violin()+## using violin plot 
+  labs(x = "Bill Length (mm)",     # Axis labels 
+       y = "Body Mass (g)")  }
+
+
+
+p1 <- penguinviolin(penguins) ## creating output "p1" using the new "penguinviolin" function
+p1 ## displaying penguin violin plot
+  
+
+
+```
+
+# Creating function 3
+
+```{r}
+
+redtext <- function() {
+  theme(plot.title = element_text(color = "red"),
+        axis.text = element_text(color = "red"),
+        axis.title = element_text(color = "red"))
+  }
+
+```
+
+# Showing example of function 3
+
+```{r}
+
+### so just copying code for a ggplot and on the last line the redtext function is added
+ggplot(data = penguins,aes(x = bill_length_mm, 
+          y = body_mass_g,
+          color = species,
+          fill = species))+    
+          geom_violin()+## using violin plot 
+  labs(x = "Bill Length (mm)",     # Axis labels 
+       y = "Body Mass (g)") +
+  redtext()  ## here the redtext function now changes x and y axis to red and axis labels also.
+
+p1+redtext()    ## these functions work together nicely :)
+
+
+```
+
+
+
+
+
+
