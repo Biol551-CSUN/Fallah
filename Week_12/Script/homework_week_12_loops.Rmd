@@ -1,0 +1,70 @@
+---
+title: "Homework_week_12_loops"
+author: "Roshan Fallah"
+date: "2023-04-25"
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+  shiny::shinyApp:
+    options:
+      theme: "cayman"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+# Load libraries & data
+
+```{r}
+library(here)
+library(tidyverse)
+
+homework_path<-here("Week_12","Data", "homework") # pointing to data folder
+homeworkfiles <- dir(path = homework_path,pattern = ".csv") # find anything csv in the folder
+
+homeworkdata<-data.frame(matrix(nrow = length(homeworkfiles), ncol = 5)) # Creating 5 new column spaces for mean, stdeviation and filename of temp and lux 
+colnames(homeworkdata)<-c("filename", "mean_lux","stdev_lux", "mean_temp", "stdev_temp") ## naming
+
+
+raw_hw_files <- read_csv(paste0(homework_path,"/",homeworkfiles[1])) # reading new table in with 5 column spaces. 
+
+mean_temp<-mean(raw_hw_files$Temp.C, na.rm = TRUE)  # calculating mean temp
+
+for (i in 1:length(homeworkfiles)){ # loop over 1:3 the number of files 
+  raw_data<-read_csv(paste0(homework_path,"/",homeworkfiles[i]))
+  homeworkdata$filename[i]<-homeworkfiles[i]
+  homeworkdata$mean_lux[i]<- mean(raw_hw_files$Intensity.lux, na.rm = TRUE)
+  homeworkdata$stdev_lux[i]<- sd(raw_hw_files$Intensity.lux, na.rm = TRUE)
+  homeworkdata$mean_temp[i]<- mean(raw_hw_files$Temp.C, na.rm = TRUE)
+  homeworkdata$stdev_temp[i]<- sd(raw_hw_files$Temp.C, na.rm = TRUE)
+  
+} 
+
+homeworkdata
+
+```
+
+# For map()ing the data
+
+```{r}
+homework_path <- here("Week_12", "Data", "homework")
+hwork_datamap <- dir(path = homework_path,pattern = ".csv",  full.names = TRUE) # include csv files
+
+homework_data_map <- hwork_datamap %>%   # reading in
+  set_names()%>%  
+  map_df(read_csv,.id = "filename")%>%          # setting i.d to 'filename'
+  group_by(filename) %>%
+  summarise(mean_lux = mean(Intensity.lux,na.rm = TRUE),     ## calculating mean and stdev of files
+            stdev_lux = sd(Intensity.lux,na.rm = TRUE),
+            mean_temp = mean(Temp.C, na.rm = TRUE),
+            stdev_temp = sd(Temp.C, na.rm = TRUE))
+             
+
+homework_data_map
+
+
+```
+
+```{r}
